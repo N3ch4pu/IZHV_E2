@@ -98,7 +98,7 @@ public class Player : MonoBehaviour
     /// Current state of gravity - 1.0 for down, -1.0f for up.
     /// </summary>
     private float mCurrentGravity = 1.0f;
-    
+
     /// <summary>
     /// Called before the first frame update.
     /// </summary>
@@ -150,7 +150,7 @@ public class Player : MonoBehaviour
     /// Check if we are on the ground.
     /// </summary>
     /// <returns>Returns true if we are on solid ground.</returns>
-    bool IsOnGround()
+    public bool IsOnGround()
     {
         // Cast our current BoxCollider in the current gravity direction.
         var hitInfo = Physics2D.BoxCast(

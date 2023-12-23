@@ -17,7 +17,7 @@ public class Obstacle : MonoBehaviour
     /// <summary>
     /// Movement speed of this obstacle.
     /// </summary>
-    public float movementSpeed = 1.0f;
+    public float movementSpeed = 4.0f;
     
     /// <summary>
     /// Direction of movement.
@@ -59,6 +59,13 @@ public class Obstacle : MonoBehaviour
     {
         // Check the collided object against the layer mask.
         var hitDespawn = mBC.IsTouchingLayers(despawnLayerMask);
+        
+        // If the player jumped onto the obstacle, don't destroy it 
+        Player player = other.collider.gameObject.GetComponent<Player>();
+        if(!player.IsOnGround())
+        {
+            Destroy(gameObject);
+        }
         
         // If we collide with any de-spawner -> destroy this object.
         if (hitDespawn)
